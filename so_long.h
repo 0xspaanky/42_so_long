@@ -6,7 +6,7 @@
 /*   By: smounafi <smounafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:56:57 by smounafi          #+#    #+#             */
-/*   Updated: 2022/12/23 02:50:35 by smounafi         ###   ########.fr       */
+/*   Updated: 2022/12/25 14:30:22 by smounafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,6 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
-
 typedef struct pec
 {
     int nb_pl;
@@ -44,7 +36,8 @@ typedef struct image
     void *collect;
     void *hero;
     void *wall;
-    void *door;
+    void *closed_door;
+    void *open_door;
     void *exit;
 } t_image;
 
@@ -53,6 +46,12 @@ typedef struct player
     int x;
     int y;
 } t_player;
+
+typedef struct door
+{
+    int door_pos_x;
+    int door_pos_y;
+} t_door;
 
 typedef struct window
 {
@@ -64,9 +63,11 @@ typedef struct window
     int w;
     int x;
     int y;
+    int count_moves;
     t_pec pec;
     t_image img;
     t_player plyr_pos;
+    t_door door;
 } t_window;
 
 typedef struct s_colors
@@ -74,7 +75,6 @@ typedef struct s_colors
     char new;
     char old;
 }   t_colors;
-
 
 //char	*ft_substr(char const *s, unsigned int start, size_t len);
 //size_t	ft_strlen(const char *s);
@@ -100,10 +100,21 @@ void check_y_wall(t_window *window);
 void check_y_wall(t_window *window);
 void count_pec(t_window *window);
 void check_pl_ex_col(t_window *window);
-void check_new_line(char *str);
 void check_map(t_window *window);
 void check_map_ff(t_window *window);
 void player_pos(t_window *window);
+void exit_move(t_window window);
+int key_hook(int keycode, t_window *win);
+void render_door(t_window *win);
+void up_helper_0(t_window *win);
+void up_helper_1(t_window *win);
+void down_helper_0(t_window *win);
+void down_helper_1(t_window *win);
+void left_helper_0(t_window *win);
+void left_helper_1(t_window *win);
+void right_helper_0(t_window *win);
+void right_helper_1(t_window *win);
+void congrats(t_window *win);
 // void flood_fill(t_window *window, int x, int y, char new, char old);
 void put_img_to_window(t_window *game);
 void xpm_to_img(t_window *index);

@@ -6,11 +6,55 @@
 /*   By: smounafi <smounafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:46:00 by smounafi          #+#    #+#             */
-/*   Updated: 2022/12/23 02:58:13 by smounafi         ###   ########.fr       */
+/*   Updated: 2022/12/24 18:23:48 by smounafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
+
+void check_new_line(char *str)
+{
+    int y;
+
+    y = 0;
+    if (!*str)
+        errors(8);
+    if (str[0] == '\n' || str[my_len(str) - 1] == '\n')
+        errors(6);
+    while (str[y])
+    {
+        if (str[y] == '\n' && str[y + 1] == '\n')
+            errors(6);
+        y++;
+    }
+}
+
+void check_map_name(char *name)
+{
+    int i;
+
+    i = 0;
+    i = my_len(name);
+	if (name[i - 1] != 'r' || name[i - 2] != 'e' || name[i - 3] != 'b' || name[i - 4] != '.')
+        errors(3);
+}
+
+void check_rectangular(t_window *window)
+{
+    int x;
+    int y;
+    
+    y = 0;
+    while(y < get_y(window->map))
+    {
+        x = 0;
+        while(window->map[y][x])
+            x++;
+        if(x != get_x(window->map))
+            errors(4);
+        y++;
+    }
+}
 
 void get_map(char *arg, int fd, t_window *window)
 {
