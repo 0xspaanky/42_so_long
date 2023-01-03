@@ -6,7 +6,7 @@
 /*   By: smounafi <smounafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 23:56:03 by smounafi          #+#    #+#             */
-/*   Updated: 2022/12/22 00:17:08 by smounafi         ###   ########.fr       */
+/*   Updated: 2022/12/27 14:49:45 by smounafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_readfile(int fd, char *static_stocker)
 	readed_line = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!readed_line)
 		return (NULL);
-	while (!find_me(static_stocker, '\n') && n_readed != 0 )
+	while (!find_me(static_stocker, '\n') && n_readed != 0)
 	{
 		n_readed = read(fd, readed_line, BUFFER_SIZE);
 		if (n_readed == -1)

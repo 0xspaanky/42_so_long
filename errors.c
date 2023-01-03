@@ -6,7 +6,7 @@
 /*   By: smounafi <smounafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 20:27:56 by smounafi          #+#    #+#             */
-/*   Updated: 2022/12/24 18:20:13 by smounafi         ###   ########.fr       */
+/*   Updated: 2022/12/27 18:31:31 by smounafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ void	errors(int i)
 		ft_printf("\033[1;31m🛑ERROR: different character found! remove it..!");
 	else if (i == 8)
 		ft_printf("\033[1;31m🛑ERROR: empty map!");
+	else if (i == 9)
+		ft_printf("\033[1;31m🛑ERROR: fd error!");
 	exit(0);
 }

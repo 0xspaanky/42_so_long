@@ -6,7 +6,7 @@
 /*   By: smounafi <smounafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 23:55:57 by smounafi          #+#    #+#             */
-/*   Updated: 2022/12/18 00:21:39 by smounafi         ###   ########.fr       */
+/*   Updated: 2023/01/03 01:01:27 by smounafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ char	*join_both(char *s1, char *s2)
 		j++;
 	}
 	dst[i + j] = '\0';
-	free(s1);
 	return (dst);
 }
 
@@ -102,4 +101,3 @@ int	find(char *str, char *to_find)
 		return (1);
 	return (0);
 }
-
