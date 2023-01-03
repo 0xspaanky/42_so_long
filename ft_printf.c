@@ -6,11 +6,11 @@
 /*   By: smounafi <smounafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 19:57:43 by smounafi          #+#    #+#             */
-/*   Updated: 2022/12/23 02:08:35 by smounafi         ###   ########.fr       */
+/*   Updated: 2023/01/03 03:05:49 by smounafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Printf/ft_printf.h"
+#include "ft_printf.h"
 
 int	checkconversion(char c, va_list list)
 {

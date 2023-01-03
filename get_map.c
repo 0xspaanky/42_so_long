@@ -6,7 +6,7 @@
 /*   By: smounafi <smounafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:46:00 by smounafi          #+#    #+#             */
-/*   Updated: 2023/01/03 01:01:10 by smounafi         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:12:01 by smounafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	get_map(char *arg, int fd, t_window *window)
 	map_line = get_next_line(fd);
 	while (map_line)
 	{
-		str = join_both(str, map_line);
+		str = join_strings(str, map_line);
 		free(map_line);
 		map_line = get_next_line(fd);
 	}
@@ -78,5 +78,4 @@ void	get_map(char *arg, int fd, t_window *window)
 	window->map = ft_split(str, '\n');
 	window->save = ft_split(str, '\n');
 	free(str);
-	free(map_line);
 }

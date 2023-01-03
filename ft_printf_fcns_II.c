@@ -6,11 +6,11 @@
 /*   By: smounafi <smounafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:58:24 by smounafi          #+#    #+#             */
-/*   Updated: 2022/12/23 02:09:59 by smounafi         ###   ########.fr       */
+/*   Updated: 2023/01/03 03:05:58 by smounafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Printf/ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_hexadeconv_tolow(unsigned int nb)
 {

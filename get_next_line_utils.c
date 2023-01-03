@@ -6,7 +6,7 @@
 /*   By: smounafi <smounafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 23:55:57 by smounafi          #+#    #+#             */
-/*   Updated: 2023/01/03 01:01:27 by smounafi         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:24:40 by smounafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 size_t	my_len(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	while (s && s[i])
 	{
 		i++;
 	}
 	return (i);
 }
 
-char	*join_both(char *s1, char *s2)
+char	*join_strings(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	j;
@@ -48,41 +48,37 @@ char	*join_both(char *s1, char *s2)
 		j++;
 	}
 	dst[i + j] = '\0';
+	free(s1);
 	return (dst);
 }
 
 void	*alloc_me(size_t count, size_t size)
 {
-	char	*ptr;
+	char	*p;
 	size_t	i;
 
 	i = 0;
-	if (count && size > SIZE_MAX / count)
-		return (0);
-	ptr = malloc(count * size);
-	if (!ptr)
-		return (0);
+	p = (char *)malloc(count * size);
+	if (!p)
+		return (NULL);
 	while (i < count * size)
 	{
-		ptr[i] = '\0';
+		p[i] = '\0';
 		i++;
 	}
-	return (ptr);
+	return (p);
 }
 
 char	*find_me(const char *s, int c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
+	while (*s)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
 	}
-	if (((char *)s)[i] == (char)c)
-		return ((char *)s + i);
+	if ((char)c == '\0')
+		return ((char *)s);
 	return (0);
 }
 

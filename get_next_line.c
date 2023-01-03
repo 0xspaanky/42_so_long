@@ -6,11 +6,38 @@
 /*   By: smounafi <smounafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 23:56:03 by smounafi          #+#    #+#             */
-/*   Updated: 2022/12/27 14:49:45 by smounafi         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:24:51 by smounafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+char	*join_both(char *s1, char *s2)
+{
+	size_t	i;
+	size_t	j;
+	char	*dst;
+
+	if (!s1 || !s2)
+		return (NULL);
+	dst = (char *)malloc(my_len(s1) + my_len(s2) + 1);
+	i = 0;
+	if (!dst)
+		return (NULL);
+	while (s1[i])
+	{
+		dst[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		dst[my_len(s1) + j] = s2[j];
+		j++;
+	}
+	dst[i + j] = '\0';
+	return (dst);
+}
 
 char	*ft_readfile(int fd, char *static_stocker)
 {
@@ -33,9 +60,7 @@ char	*ft_readfile(int fd, char *static_stocker)
 			return (NULL);
 		}
 		readed_line[n_readed] = '\0';
-		static_stocker = join_both(static_stocker, readed_line);
-		if (!static_stocker)
-			return (NULL);
+		static_stocker = join_strings(static_stocker, readed_line);
 	}
 	free(readed_line);
 	return (static_stocker);
@@ -51,7 +76,7 @@ char	*ft_line(char *static_stocker)
 		return (NULL);
 	while (static_stocker[i] && static_stocker[i] != '\n')
 		i++;
-	line = malloc((sizeof(char) * i + 2));
+	line = (char *)malloc((sizeof(char) * i + 2));
 	if (!line)
 		return (NULL);
 	i = 0;
@@ -83,7 +108,7 @@ char	*ft_nextline(char *static_stocker)
 		free(static_stocker);
 		return (NULL);
 	}
-	line = malloc(sizeof(char) * (my_len(static_stocker) - i + 1));
+	line = (char *)malloc(sizeof(char) * (my_len(static_stocker) - i + 1));
 	if (!line)
 		return (NULL);
 	j = 0;
@@ -92,8 +117,8 @@ char	*ft_nextline(char *static_stocker)
 	{
 		line[j++] = static_stocker[i++];
 	}
-	line[j] = '\0';
 	free(static_stocker);
+	line[j] = '\0';
 	return (line);
 }
 
@@ -102,7 +127,6 @@ char	*get_next_line(int fd)
 	static char	*static_stocker;
 	char		*line;
 
-	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	static_stocker = ft_readfile(fd, static_stocker);

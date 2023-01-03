@@ -6,11 +6,11 @@
 /*   By: smounafi <smounafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 02:40:51 by smounafi          #+#    #+#             */
-/*   Updated: 2022/12/29 17:46:30 by smounafi         ###   ########.fr       */
+/*   Updated: 2023/01/03 02:58:10 by smounafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Libft/libft.h"
+#include "libft.h"
 
 int	n_len(int n)
 {

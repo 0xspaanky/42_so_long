@@ -6,7 +6,7 @@
 /*   By: smounafi <smounafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 16:13:23 by smounafi          #+#    #+#             */
-/*   Updated: 2023/01/03 01:01:50 by smounafi         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:54:01 by smounafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	xpm_to_img(t_window *index)
 	index->img.background = mlx_xpm_file_to_image(index->mlx,
 			"./img/background.xpm", &x, &y);
 	index->img.collect = mlx_xpm_file_to_image(index->mlx,
-			"./img/coin_4.xpm", &x, &y);
+			"./img/collect.xpm", &x, &y);
 	index->img.closed_door = mlx_xpm_file_to_image(index->mlx,
 			"./img/door_closed.xpm", &x, &y);
 	index->img.open_door = mlx_xpm_file_to_image(index->mlx,
